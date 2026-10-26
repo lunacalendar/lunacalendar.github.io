@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Join a family on Luna</title>
+<meta name="robots" content="noindex">
+<style>
+  :root { --bg: #1b0a26; --card: #2d0f3f; --line: #4a2366; --text: #f6effa; --soft: #cdb8db; --gold: #f8bf00; --ink: #241000; }
+  * { box-sizing: border-box; }
+  body { margin: 0; min-height: 100vh; background: var(--bg); color: var(--text); font: 16px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+         display: flex; align-items: center; justify-content: center; padding: 24px 16px; }
+  main { width: 100%; max-width: 420px; background: var(--card); border: 1px solid var(--line); border-radius: 24px; padding: 32px 24px; text-align: center; }
+  .moon { width: 72px; height: 72px; margin: 0 auto 16px; border-radius: 50%; background: radial-gradient(circle at 40% 38%, #fffdf6, #efe4c8 60%, #d9c79c);
+          box-shadow: 0 0 36px 10px rgba(248, 191, 0, .35); }
+  h1 { font: 600 26px/1.25 Georgia, "Times New Roman", serif; margin: 0 0 8px; }
+  p { color: var(--soft); margin: 0 0 24px; }
+  a.open { display: block; padding: 14px 20px; border-radius: 999px; background: var(--gold); color: var(--ink); font-weight: 700; text-decoration: none; font-size: 17px; }
+  .note { font-size: 14px; margin: 20px 0 0; }
+</style>
+</head>
+<body>
+<main>
+  <div class="moon" aria-hidden="true"></div>
+  <h1 id="title">You’re invited to a family</h1>
+  <p id="lead">Open the invite in Luna to join their family calendar, lists and little things.</p>
+  <a class="open" id="open" href="#">Open in Luna</a>
+  <p class="note" id="note">Nothing happens? Install Luna, or update it, then tap the link again.</p>
+</main>
+<script>
+  // What Luna needs from this link, passed on as it came.
+  const query = new URLSearchParams(location.search);
+  const value = (query.get("code") || "").replace(/[^A-Za-z0-9-]/g, "").slice(0, 8000);
+  const target = "join?code=" + encodeURIComponent(value);
+  // Android opens Luna through an intent (tapped, so Chrome allows it); iPhone through Luna's own address.
+  const android = /android/i.test(navigator.userAgent);
+  document.getElementById("open").href = android ? "intent://" + target + "#Intent;scheme=luna;end" : "luna://" + target;
+  if ((navigator.language || "").toLowerCase().startsWith("es")) {
+    document.documentElement.lang = "es";
+    document.title = "Únete a una familia en Luna";
+    document.getElementById("title").textContent = "Te invitaron a una familia";
+    document.getElementById("lead").textContent = "Abre la invitación en Luna para unirte a su calendario familiar, listas y pequeños detalles.";
+    document.getElementById("open").textContent = "Abrir en Luna";
+    document.getElementById("note").textContent = "¿No pasa nada? Instala Luna, o actualízala, y vuelve a tocar el enlace.";
+  }
+</script>
+</body>
+</html>
