@@ -1,10 +1,10 @@
 [
   {
     "relation": ["delegate_permission/common.handle_all_urls"],
-    "target": { "namespace": "android_app", "package_name": "com.ezra.luna", "sha256_cert_fingerprints": ["7C:41:1A:91:08:48:F3:90:AE:2F:EA:A2:72:9C:B4:4D:9E:24:D7:3C:AA:F9:B2:53:91:B4:7F:BC:83:EA:92:BB"] }
+    "target": { "namespace": "android_app", "package_name": "com.ezra.luna", "sha256_cert_fingerprints": ["38:1E:E0:3A:6D:6A:2F:1C:6B:65:4C:15:FD:DA:87:E8:91:04:B7:A7:06:EA:E5:6E:38:90:99:55:1A:2C:4A:0B", "7C:41:1A:91:08:48:F3:90:AE:2F:EA:A2:72:9C:B4:4D:9E:24:D7:3C:AA:F9:B2:53:91:B4:7F:BC:83:EA:92:BB"] }
   },
   {
     "relation": ["delegate_permission/common.handle_all_urls"],
-    "target": { "namespace": "android_app", "package_name": "com.ezra.luna.dev", "sha256_cert_fingerprints": ["7C:41:1A:91:08:48:F3:90:AE:2F:EA:A2:72:9C:B4:4D:9E:24:D7:3C:AA:F9:B2:53:91:B4:7F:BC:83:EA:92:BB"] }
+    "target": { "namespace": "android_app", "package_name": "com.ezra.luna.dev", "sha256_cert_fingerprints": ["38:1E:E0:3A:6D:6A:2F:1C:6B:65:4C:15:FD:DA:87:E8:91:04:B7:A7:06:EA:E5:6E:38:90:99:55:1A:2C:4A:0B", "7C:41:1A:91:08:48:F3:90:AE:2F:EA:A2:72:9C:B4:4D:9E:24:D7:3C:AA:F9:B2:53:91:B4:7F:BC:83:EA:92:BB"] }
   }
 ]
