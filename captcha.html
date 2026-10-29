@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Luna check</title>
+<!--
+  Luna's sign-in check, shown inside the app: Cloudflare Turnstile with the site key the app passes (?sitekey=),
+  in its theme (?theme=light|dark) and language (?lang=en|es). Its answer goes back to the app by opening
+  luna-captcha://done?token=..., which the app catches; luna-captcha://failed when it can't be done.
+-->
+<style>
+  html, body { margin: 0; background: transparent; }
+  body { display: flex; justify-content: center; align-items: center; min-height: 70px; }
+</style>
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=start&render=explicit" async defer></script>
+<script>
+  const params = new URLSearchParams(location.search);
+  function tell(path) { location.href = "luna-captcha://" + path; }
+  function start() {
+    turnstile.render("#check", {
+      sitekey: params.get("sitekey") || "",
+      theme: params.get("theme") === "dark" ? "dark" : "light",
+      language: params.get("lang") === "es" ? "es" : "en",
+      callback: (token) => tell("done?token=" + encodeURIComponent(token)),
+      "error-callback": () => tell("failed"),
+      "expired-callback": () => tell("failed"),
+    });
+  }
+</script>
+</head>
+<body>
+<div id="check"></div>
+</body>
+</html>
